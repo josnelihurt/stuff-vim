@@ -1,1 +1,1 @@
-cp ~/.vimrc .
+cp ~/.vimrc jrb-config.vim
