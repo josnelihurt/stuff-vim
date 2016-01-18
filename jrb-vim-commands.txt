@@ -1,0 +1,39 @@
+
+This file includes all commands that I'm sure that I'll forget 
+Change ESC key for Caps Lock key 
+================================ 
+/usr/bin/setxkbmap -option "caps:swapescape"
+
+NEERDTree
+=========
+My custom mapping ^n
+
+Easymotion
+==========
+use \w to jump to a targe in the file 
+
+cdargs
+======
+This is not a vim command but I'll included here 
+This help you to keep track of the bookmarks on your bash system
+cdb is cd for bookmarks
+ca is create a bookmark in the pwd
+editing vimrc
+=============
+source ~/.vimrc -> this will reload vimrc without restarting vim :p
+
+find things in working directory
+================================
+:grep! "storage_print" . -r
+
+folding stuff
+============
+zfa + character fold inside the character
+zc close the fold 
+zo open a fold where you are at
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
+Clean swap files in directory
+=============================
+find ./ -type f -name "\.*sw[klmnop]" -delete
