@@ -48,14 +48,17 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'mrtazz/DoxygenToolkit.vim'
 " Dox over a function declaration will create the doxygen documentation
 " skeleton
+" Plugin 'vim-scripts/repeat-motion'
+" let repmo_key = "down" 
+" let repmo_revkey = "up"
 filetype plugin indent on
 
 " Key Mappings 
 "-------------------------------------------------------------------------------
 let mapleader = '\'
 let g:mapleader = '\'
-no <down> <Nop>
-no <left> <Nop>
+" no <down> <Nop>
+" no <left> <Nop>
 no <right> <Nop>
 no <up> <Nop>
 ino <down> <Nop>
@@ -79,6 +82,7 @@ nnoremap L Lzz
 
 let g:ctrlp_map = '<leader>p'
 nnoremap <leader>b :LustyBufferExplorer<CR>
+" Open tag list
 nnoremap <leader>t :Tlist<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>w :wa!<CR>
@@ -94,8 +98,8 @@ map <leader>sa zg
 map <leader>s? z=
 
 
-nmap <leader>ev :e $MYVIMRC<CR>
-nmap <leader>sv :so $MYVIMRC<CR>
+nmap <leader>ev :e $MYVIMRC<CR>zz
+nmap <leader>sv :wa!<CR>:so $MYVIMRC<CR>zz
 nnoremap <leader>tg :TlistToggle<CR>
 nnoremap <leader>n :wa!<CR>:NERDTreeToggle<CR>
 nnoremap <leader>m :wa!<CR>:make<CR>
@@ -104,6 +108,9 @@ nnoremap <leader>mc :wa!<CR>:make clean<CR>
 
 nnoremap <leader>do :Dox<CR>
 " buffer manipulation
+nnoremap <leader>bn :bnext<CR>zz
+nnoremap <leader>bp :bprevious<CR>zz
+map <leader>rctag :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Another remaps
 " ******************************************************************************
@@ -162,12 +169,19 @@ colorscheme desert
 syntax on 
 set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey90
-" Auto save folding 
+" Auto save folding  This will write files at ~/.vim/view 
+" this files may cause refreshing problems from the eviroment values THIS
+" FILE
+		
 au BufWinLeave ?* mkview 1
 au BufWinEnter ?* silent loadview 1
+" This puts relative numbering to lines in fordward and backward
 set relativenumber
 set hlsearch
 highlight ColorColumn ctermbg=7
 set colorcolumn=80
 set noswapfile
 set nobackup
+" All vim share the same clipboard buffer, not safe at all but I liked
+
+set clipboard=unnamed
